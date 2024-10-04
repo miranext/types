@@ -1,0 +1,35 @@
+{
+  "name": "@miranext/types",
+  "version": "0.0.1",
+  "description": "Common Types",
+  "keywords": [],
+  "author": "Miranext Technologies",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./esm/types/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./cjs/types/index.d.ts",
+        "default": "./cjs/index.js"
+      }
+    }
+  },
+  "types": "./cjs/types/index.d.ts",
+  "main": "./cjs/index.js",
+  "files": [
+    "**/*"
+  ],
+  "scripts": {
+    "clean": "npx rimraf dist",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && cp package.json dist",
+    "build:esm": "tsc -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
