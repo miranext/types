@@ -26,8 +26,7 @@
     "clean": "npx rimraf dist",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && cp package.json dist",
     "build:esm": "tsc -p ./tsconfig.esm.json && mv dist/esm/index.js dist/esm/index.mjs",
-    "build:cjs": "tsc -p ./tsconfig.cjs.json",
-    "prepack": "npm run build"
+    "build:cjs": "tsc -p ./tsconfig.cjs.json"
   },
   "devDependencies": {
     "@types/estree": "^1.0.6",
